@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel="shortcut icon" type="image/x-icon" href="[% SISTEM_VAR = URL_STATIC_SERVER %]images/faviconM.ico">
+		<link rel="stylesheet" type="text/css" href="[% SISTEM_VAR = URL_STATIC_SERVER_PRELOAD %]css/styles.css?v=[% SISTEM_VAR = REVISION_INFO %]">
+<TMPL_UNLESS NAME=EXTERNAL_POS_UNIQUE_ID>
+		<script src="https://use.typekit.net/vjk6ifn.js"></script>
+		<script>try{Typekit.load({ async: true });}catch(e){}</script>
+</TMPL_UNLESS>		
+		<script src="[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.js?v=[% SISTEM_VAR = REVISION_INFO %]"></script>
+		<title>Национална лотария<TMPL_IF NAME=SEO_TITLE> / <TMPL_VAR NAME=SEO_TITLE></TMPL_IF> / MEGAJACKPOT_MALL</title>
+		<meta name="viewport" content="width=1280">
+	</head>
+	<body data-app-assetsloadperc="0" data-app-debug-info=""<TMPL_UNLESS NAME=IS_WEB_GAME> class="check_in_mall"</TMPL_UNLESS>> 
+		<TMPL_VAR NAME=INNER_CONTENT>
+		<script>
+			bg.ecard.start({
+				appName: 'MegaJackpot',
+				appParams: {
+					debugMode: false,
+					soundDebug: false,
+					is_web_game: '<TMPL_VAR NAME=IS_WEB_GAME>',
+					is_mobile_device: '<TMPL_VAR NAME=IS_MOBILE>',
+					<TMPL_IF IS_WEB_GAME>userData: JSON.parse('<TMPL_VAR NAME=INITAL_REQUEST>'),</TMPL_IF>
+					url: {
+						barcodeSubmit: {
+							url: '/mega_jackpot/<TMPL_VAR NAME=GAME_FROM>/request/<TMPL_IF NAME=EXTERNAL_POS_UNIQUE_ID>?external_pos_unique_id=<TMPL_VAR NAME=EXTERNAL_POS_UNIQUE_ID></TMPL_IF>',
+							retryCount: 1,
+							retryTimeout: 1,
+							errorTitle: 'Възникна грешка в комуникацията',
+							errorText: 'Моля, проверете, дали сте свързани с интернет',
+						},
+						gameWheelSpin: {
+							url: '/mega_jackpot/<TMPL_VAR NAME=GAME_FROM>/request/<TMPL_IF NAME=EXTERNAL_POS_UNIQUE_ID>?external_pos_unique_id=<TMPL_VAR NAME=EXTERNAL_POS_UNIQUE_ID></TMPL_IF>',
+							retryCount: 1,
+							retryTimeout: 1,
+							errorTitle: 'Възникна грешка в комуникацията',
+							errorText: 'Моля, проверете, дали сте свързани с интернет',
+						},
+						gameSphereSpin: {
+							url: '/mega_jackpot/<TMPL_VAR NAME=GAME_FROM>/request/<TMPL_IF NAME=EXTERNAL_POS_UNIQUE_ID>?external_pos_unique_id=<TMPL_VAR NAME=EXTERNAL_POS_UNIQUE_ID></TMPL_IF>',
+							retryCount: 1,
+							retryTimeout: 1,
+							errorTitle: 'Възникна грешка в комуникацията',
+							errorText: 'Моля, проверете, дали сте свързани с интернет',
+						},
+						gameResultReg: {
+							url: '/mega_jackpot/<TMPL_VAR NAME=GAME_FROM>/request/<TMPL_IF NAME=EXTERNAL_POS_UNIQUE_ID>?external_pos_unique_id=<TMPL_VAR NAME=EXTERNAL_POS_UNIQUE_ID></TMPL_IF>',
+							retryCount: 1,
+							retryTimeout: 1,
+							errorTitle: 'Възникна грешка в комуникацията',
+							errorText: 'Моля, проверете, дали сте свързани с интернет',
+						},
+					},
+					assetsBaseUrl: '[% SISTEM_VAR = URL_STATIC_SERVER_PRELOAD %]'<TMPL_IF NAME=WEBSOCKET_URL>,
+					websocket: {
+						Barcode: {
+							fullUrl: '<TMPL_VAR NAME=WEBSOCKET_URL>',
+							reconnectTimeout: 3,
+							pingInterval: 10,
+							silentReconnect: 0,
+							retryCount: 999,
+						}
+					}</TMPL_IF>
+				},
+				js: [
+					'[% SISTEM_VAR = URL_JAVASCRIPT_URL %]vendor/ua-parser.min.js?v=[% SISTEM_VAR = REVISION_INFO %]',
+					'[% SISTEM_VAR = URL_JAVASCRIPT_URL %]merged_js_megajackpot.js?v=[% SISTEM_VAR = REVISION_INFO %]',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]vendor/TweenMax.min.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]vendor/html5-dataset.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]vendor/howler.core.min.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Time.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Console.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.EventDispatcher.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.InputManager.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.VirtualKeyboard.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Network.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Network.Ajax.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Network.Socket.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.SoundManager.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.SoundManagerWebAudio.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.SoundManagerHowler.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.AssetManager.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Asset.Class.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Asset.Image.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Asset.Sound.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.DomTarget.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.DomTargets.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.SectionManager.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Interface.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.InterfaceLabel.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.Class.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.Intro.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.IntroWeb.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.BarcodeWorking.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.Login.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.LoginError.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.GameStart.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.GameWheel.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.GameWheelResult.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.Spheres.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.GameError.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.JackpotWon.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.Registration.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.RegistrationSuccess.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.TalonHistory.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.Section.NetworkError.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.DisplayElement.Class.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.MegaJackpot.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.MegaJackpot.Core.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.MegaJackpot.Game.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.MegaJackpot.BarcodeManager.js',
+					// '[% SISTEM_VAR = URL_JAVASCRIPT_URL %]app/bg.ecard.MegaJackpot.Sphere.js',
+
+				]
+			});
+		</script>
+<TMPL_UNLESS NAME=EXTERNAL_POS_UNIQUE_ID>
+	
+	<TMPL_INCLUDE NAME=../google_tag_manager.html>
+</TMPL_UNLESS>
+
+	</body>
+</html>

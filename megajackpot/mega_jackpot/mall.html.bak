@@ -1,0 +1,204 @@
+<a href="javascript:document.location.reload(true);" class="logo-nl"></a>
+	<a href="javascript:;" class="logo-2-chance"></a>
+	<div class="background-main"></div>
+
+	<section class="home-screen app-section-Intro hidden">
+		<div class="home-text-car"></div>
+		<div class="arrow-down-big" data-type="btn" data-target="section" data-action="simulateBarcode"></div>
+	</section>
+
+	<section class="screen-error app-section-LoginError hidden">
+		<div class="error-code-text">
+		</div>
+	</section>
+
+	<section class="screen-start-game app-section-GameStart hidden">
+		<div class="start-game-text">
+			<img src="/images/generated-games-text.png" class="generated-games-text">
+		</div>
+		<button class="btn btn-start-game" data-type="btn" data-target="section" data-action="startGame"></button>
+	</section>
+
+	<section class="screen-spin-wheel app-section-GameWheel hidden">
+    <div class="label-wheelResult tempWheelResult" data-type="currency"></div>
+		<div class="spin-wheel-text">
+			<p>и определете<br /> максималния брой<br /> точки, които може<br /> да спечелите.</p>
+		</div>
+		<div class="wheel-box" data-type="btn" data-target="section" data-action="spinWheel">
+			<div class="arrow-stop"></div>
+		</div>
+		<div class="spin-here-text"></div>
+		<div class="spin-arm"></div>
+	</section>
+  
+  <section class="screen-spin-result app-section-GameWheelResult hidden">
+  
+    <div>играете за</div>
+    <div><span class="label-wheelResult" data-type="currency">---</span> точки</div>
+    <div><sub>Всеки 5000 точки Ви включват веднъж в жребия за колата.<br> Колкото повече точки спечелите в играта, <br>толкова по-голям е шанса Ви точно Вие да спечелите!</sub></div>
+    <div>успех!</div>
+    <div><button data-type="btn" data-target="section" data-action="startSpheres">СТАРТ</button></div>
+  
+  </section>
+  
+	<section class="game-second-screen app-section-Spheres hidden">
+		<div class="stage-back"></div>
+		<p class="points-box">До момента имате: <span class="label-gPoints" data-type="currency">0</span> точки и <span class="label-gErrorsCount">0</span> грешки</p>
+		<div class="cancel-win">ОТКАЗВАМ СЕ <br><span>с 10 000 точки</span></div>
+		<div class="generated-win-sum"></div>
+		<div class="letters-box">
+			<div class="letter letter-1 letter-m"></div>
+			<div class="letter letter-2 letter-e"></div>
+			<div class="letter letter-3 letter-g"></div>
+			<div class="letter letter-4 letter-a"></div>
+			<div class="letter letter-5 letter-j"></div>
+			<div class="letter letter-6 letter-a"></div>
+			<div class="letter letter-7 letter-c"></div>
+			<div class="letter letter-8 letter-k"></div>
+			<div class="letter letter-9 letter-p"></div>
+			<div class="letter letter-10 letter-o"></div>
+			<div class="letter letter-11 letter-t"></div>
+		</div>
+		<div class="spheres-box">
+			<div class="sphere-box sphere-box-1">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-2">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-3">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-4">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-5">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-6">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-7">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-8">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-9">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">-</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-10">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+		</div>
+		<div class="stop-descr-text"></div> 
+		<button class="btn-bigger" data-type="btn" data-target="section" data-action="selectUp"></button> 
+		<button class="stop-btn" data-type="btn" data-target="section" data-action="stop"></button> 
+		<button class="btn-smaller" data-type="btn" data-target="section" data-action="selectDown"></button> 
+	</section>
+
+	<section class="popup popup-first-error app-section-GameError hidden">
+		<div class="popup-error popup-back">
+			<h1>Вие направихте първата си грешка</h1>
+			<p>Имате 2 възможности:</p>
+			<div class="accept-box fleft">
+					<button class="green-btn" data-type="btn" data-target="section" data-action="continueGame">продължавам</button>
+					<ul>
+						<li>Ако познаете, ще спечелите 25 000 точки.</li>
+						<li>Ако сгрешите, ще приключите играта с 10 000 точки.</li>
+					</ul>
+			</div>
+			<div class="decline-box fleft">
+				<button class="red-btn" data-type="btn" data-target="section" data-action="endGame">отказвам се</button>
+				<ul>
+					<li>Ако познаете, ще спечелите 25 000 точки.</li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+			<div class="remaining-time">
+				<p>Оставащо време <span>00:10</span> сек.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="popup popup-success hidden">
+		<div class="popup-back">
+			<a href="javascript:;" class="close-popup">X</a>
+			<h2>ЧЕСТИТО!</h2>
+			<h3>Вие спечелихте <span>10 000 точки.</span></h3>
+			<p>Те Ви дават право на 2 участия<br /> в жребия за спечелването на<br />чисто нов автомобил.</p>
+		</div>
+	</section>
+
+  <section class="game-reg-screen app-section-Registration hidden">
+    <img src="/images/screen-reg-text.png">
+    <div>
+      <form name="reg-input-form">
+        <input type="text" name="reg-input-phone" placeholder="Телефон за връзка" value="+359 971 00 97">
+        <input type="text" name="reg-input-email" placeholder="E-mail" value="info@e-card.bg">
+      </form>
+    </div>
+    <button data-type="btn" data-target="section" data-action="submitReg"><img src="/images/screen-reg-btn-save.png"></button>
+  </section>
+
+  <div class="popup popup-input app-keyboard">
+    <div class="input-area">
+      <input type="text" class="app-keyboard-display">
+      <div data-position="static" class="kbd app-keyboard-email app-keyboard-default">
+        <button data-type="kb">1</button><button data-type="kb">2</button><button data-type="kb">3</button><button data-type="kb">4</button><button data-type="kb">5</button><button data-type="kb">6</button><button data-type="kb">7</button><button data-type="kb">8</button><button data-type="kb">9</button><button data-type="kb">0</button><button data-type="kb">_</button><button data-type="kb" data-kb-action="delete">←</button><hr><button data-type="kb">q</button><button data-type="kb">w</button><button data-type="kb">e</button><button data-type="kb">r</button>
+        <button data-type="kb">t</button><button data-type="kb">y</button><button data-type="kb">u</button><button data-type="kb">i</button><button data-type="kb">o</button><button data-type="kb">p</button><button style="visibility:hidden;" data-type="kb">&nbsp;</button><hr><button data-type="kb">a</button><button data-type="kb">s</button><button data-type="kb">d</button><button data-type="kb">f</button><button data-type="kb">g</button><button data-type="kb">h</button><button data-type="kb">j</button><button data-type="kb">k</button><button data-type="kb">l</button><button style="visibility:hidden;" data-type="kb">&nbsp;</button><hr><button data-type="kb">z</button><button data-type="kb">x</button><button data-type="kb">c</button><button data-type="kb">v</button><button data-type="kb">b</button><button data-type="kb">n</button><button data-type="kb">m</button><button data-type="kb">.</button><button style="visibility:hidden;" data-type="kb">&nbsp;</button>
+      </div>
+      <button data-type="kb" data-kb-action="close" style="height:80px; width:120px;">ЗАПИШИ</button>
+    </div>
+  </div>
+  

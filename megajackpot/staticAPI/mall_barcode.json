@@ -1,0 +1,31 @@
+{
+  "session_id": "8b823099a3821568fab6fe4cafa4143426129631",
+  "current_step_number": "0",
+  "koef":  {
+    "jackpot_sectors": { 
+      "1": { "points": 100000 },
+      "2": { "points": 1000000 },
+      "3": { "points": 200000 },
+      "4": { "points": 300000 },
+      "5": { "points": 125000 },
+      "6": { "points": 250000 },
+      "7": { "points": 80000 },
+      "8": { "points": 400000 },
+      "9": { "points": 900000 },
+      "10": { "points": 100000 }
+    },
+    "points_for_draw": "5000",
+    "spheres": {
+      "1": { "points": 5000 },
+      "2": { "points": 10000 },
+      "3": { "points": 15000 },
+      "4": { "points": 20000 },
+      "5": { "points": 25000 },
+      "6": { "points": 30000 },
+      "7": { "points": 35000 },
+      "8": { "points": 40000 },
+      "9": { "points": 50000 },
+      "10": { "points": "###JACKPOT###" }
+    }
+  }
+}

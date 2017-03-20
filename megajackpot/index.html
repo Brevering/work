@@ -1,0 +1,547 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+  <title>Национална лотария / Игра МегаДжакпот</title>
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script src="https://use.typekit.net/vjk6ifn.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+	<script src="js/app/bg.ecard.js"></script>
+  <meta name="viewport" content="width=1280">
+</head>
+
+<body data-app-debug-info="" data-app-assetsloadperc="0"> 
+	<a class="logo-nl" onclick="document.location.reload(true)"></a>
+	<a class="logo-2-chance"></a>
+	
+	<div class="background-main"></div>
+	
+	<div class="label-socketState" style="position:absolute; bottom:0px; left:0px; z-index:9999999; color:#fff;"></div>
+	
+  <div id="defTimerDisplay"></div>
+  <div id="debugTools">
+    <button data-type="btn" data-target="global" data-action="debugSoundToggle">Mute Sound</button>
+    <button data-type="btn" data-target="global" data-action="debugTimersToggle">Disable Timers</button>    
+    <button data-type="btn" data-target="global" data-action="debugWheelSpeedToggle">Fast Wheel Spin</button>    
+    <button data-type="btn" data-target="global" data-action="showJackpotVideo">Jackpot video</button>    
+    <button data-type="btn" data-target="global" data-action="testMusic">Music</button>
+<!--
+    <audio id="sound-testMusic3233" src="/images/sound/testMusic.mp3" style="width: 100px; height:50px; display:block; position:relative; z-index:9999999" controls>  
+    </audio>
+-->
+  </div>
+
+	<section class="home-screen app-section-Intro hidden">
+		<div class="home-text-car"></div>
+		<button class="arrow-down-big" data-type="btn" data-target="section" data-action="simulateBarcode"></button>
+	</section>
+	
+  <section class="app-section-BarcodeWorking hidden">
+    
+    <h1 style="text-align:center; padding: 20% 20%; color:#fff;">Обработка, моля изчакайте...</h1>
+    
+  </section>
+		
+	<section class="home-screen-web start-game app-section-IntroWeb hidden">
+	 	<div class="person-info">
+		 	<h2><span class="label-gamesPlayCount"></span> ИГРИ</h2>
+		 	<h2><span class="label-vipPoints"></span> VIP ТОЧКИ</h2>
+	 	</div>
+	 	<button class="btn-start" data-type="btn" data-target="section" data-action="startGame"></button>
+<!--	 	<a target="_blank" href="/user/lottery_tickets/register/#register-inner" class="btn btn-red hidden">Регистрирай код сега</a>-->
+	 	<a href="/help/#terms" class="terms-link white">Общи условия</a>
+	</section>
+
+	<section class="screen-error app-section-LoginError hidden">
+		<div class="error-code-text">
+			<span class="exclamation-mark"></span>
+			<p class="label-errorText">Не можете да играете с този код. <br>Моля, сканирайте нов баркод</p>
+			<span class="arrow-down-red"></span>
+		</div>
+	</section>
+
+	<section class="screen-start-game app-section-GameStart hidden">
+	  <button class="close-popup" data-type="btn" data-target="global" data-action="restartGame">X</button>
+		<div class="start-game-text">
+			<p class="label-vipPointsMessage"><span>Печелите</span>
+				<span class="yellow"><strong class="label-vipPoints">--</strong> vip точки</span>
+				всяка megajackpot игра ще ви струва <br>
+				<strong class="label-vipPointsForGame">--</strong> vip точки
+			</p>
+		</div>
+		<button class="btn mega_jackpot_buttons btn-start-game" data-type="btn" data-target="section" data-action="startGame"></button>
+		
+		<p class="accept-rules">Със стартирането на играта Вие декларирате, че сте навършили 18 години и се съгласявате с правилата на Националната лотария, обявени на адрес: <a target="_blank" href="https://www.7777.bg/">www.7777.bg</a></p>
+	</section> 
+
+	<section class="screen-spin-wheel app-section-GameWheel hidden">
+    <div class="label-wheelResult tempWheelResult" data-type="currency"></div>
+		<div class="spin-wheel-text">
+			<p>и определете<br> максималния брой<br> точки, които може<br> да спечелите.</p>
+		</div>
+		<div class="wheel-box">
+			<div class="wheel-spin" data-type="btn" data-target="section" data-dragactionend="spinWheel" data-dragaction="touchWheel"></div>
+			<div class="arrow-stop"></div>
+		</div>
+		<div class="spin-here-text" data-type="btn" data-target="section" data-dragactionend="spinWheel" data-dragaction="touchWheel"></div>
+		<div class="spin-arm"></div>  
+    <button data-type="btn" data-target="section" data-action="spinWheel" style="position:absolute; bottom:20px; right:20px; height:50px; width:200px; z-index:99999; background: red;">Завърти колелото</button>
+	</section>
+  
+  <section class="screen-spin-result app-section-GameWheelResult hidden">
+  
+    <p>играете за</p>
+    <p class="yellow"><span class="label-wheelResult" data-type="currency">---</span> точки</p>
+    <p><span class="descr-text">Всеки 5000 точки Ви включват веднъж в жребия за колата.<br> Колкото повече точки спечелите в играта, <br>толкова по-голям е шанса Ви точно Вие да спечелите!</span></p>
+    <p class="special">успех!</p>
+	<button class="btn mega_jackpot_buttons btn-start-game" data-type="btn" data-target="section" data-action="startSpheres"></button>
+  
+  </section>
+  
+	<section class="game-second-screen app-section-Spheres hidden">
+		<div class="stage-back"></div>
+		<p class="car-box">Вие играете за чисто нов<br />автомобил <span class="yellow">Toyota Corolla</span></p>
+		<p class="points-box">До момента имате: <span class="label-gPoints" data-type="currency">0</span> точки и <span class="label-gErrorsCount">0</span> грешки</p>
+    <div class="cancel-win">ОТКАЗВАМ СЕ<span>с <strong class="label-gPoints" data-type="currency">--</strong> точки</span><button class="resign-btn" data-type="btn" data-target="section" data-action="endGame"></button></div>
+    <h1><span class="label-gJackpot" data-type="currency">--</span> точки</h1>
+		<div class="letters-box">
+			<div class="letter letter-1 letter-m"></div>
+			<div class="letter letter-2 letter-e"></div>
+			<div class="letter letter-3 letter-g"></div>
+			<div class="letter letter-4 letter-a"></div>
+			<div class="letter letter-5 letter-j"></div>
+			<div class="letter letter-6 letter-a"></div>
+			<div class="letter letter-7 letter-c"></div>
+			<div class="letter letter-8 letter-k"></div>
+			<div class="letter letter-9 letter-p"></div>
+			<div class="letter letter-10 letter-o"></div>
+			<div class="letter letter-11 letter-t"></div>
+		</div>
+		<div class="spheres-box">
+			<div class="sphere-box sphere-box-1">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+            <div class="spinAnim">
+              <div class="spinAnimNum1">30</div>
+            </div>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-2">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+            <div class="spinAnim">
+              <div class="spinAnimNum1">30</div>
+            </div>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-3">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+            <div class="spinAnim">
+              <div class="spinAnimNum1">30</div>
+            </div>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-4">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+            <div class="spinAnim">
+              <div class="spinAnimNum1">30</div>
+            </div>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-5">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+            <div class="spinAnim">
+              <div class="spinAnimNum1">30</div>
+            </div>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-6">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+            <div class="spinAnim">
+              <div class="spinAnimNum1">30</div>
+            </div>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-7">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+            <div class="spinAnim">
+              <div class="spinAnimNum1">30</div>
+            </div>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-8">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+            <div class="spinAnim">
+              <div class="spinAnimNum1">30</div>
+            </div>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-9">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+            <div class="spinAnim">
+              <div class="spinAnimNum1">30</div>
+            </div>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">-</span>т.</div>
+			</div>
+			<div class="sphere-box sphere-box-10">
+				<div class="sphere">
+					<div class="sphere-number-box">
+						<span class="label-number"></span>
+            <div class="spinAnim">
+              <div class="spinAnimNum1">30</div>
+            </div>
+					</div>
+				</div>
+				<div class="step-sum"><span class="label-points" data-type="currency">--</span>т.</div>
+			</div>
+		</div>
+		<div class="stop-descr-text">
+	      <p class="stop-descr-fisrt">Натиснете бутона “СТОП” и ще спечелите <span class="label-gCurrSpherePoints" data-type="currency">--</span> точки.<br></p>
+	      <p class="stop-descr-def">Играете за <span class="label-gCurrSpherePoints" data-type="currency">--</span> точки. Изберете по-голямо или по-малко ще е следващото число <br /> и натиснете бутона “СТОП”.</p>
+	      Остават Ви <span class="label-timeRemaining"></span> сек.
+	    </div> 
+      	<button class="stop-intro-animation"  data-type="btn" data-target="section" data-action="goToEndOfIntroAnimation">Стоп</button>
+		<button class="btn-smaller" data-type="btn" data-target="section" data-action="selectDown"></button> 
+		<button class="stop-btn" data-type="btn" data-target="section" data-action="stop"></button> 
+		<button class="btn-bigger" data-type="btn" data-target="section" data-action="selectUp"></button> 
+	</section>
+
+	<section class="popup popup-first-error app-section-GameError hidden">
+		<div class="popup-error popup-back">
+			<h1>Вие направихте първата си грешка</h1>
+			<p>Имате 2 възможности:</p>
+			<div class="accept-box fleft">
+					<button class="green-btn" data-type="btn" data-target="section" data-action="continueGame">продължавам</button>
+					<ul>
+						<li>Можете да се откажете със спечелените точки на всяка следваща сфера.</li>
+						<li>При следваща грешка ще приключите играта с половината от спечелените точки.</li>
+					</ul>
+			</div>
+			<div class="decline-box fleft">
+				<button class="red-btn" data-type="btn" data-target="section" data-action="endGame">отказвам се</button>
+				<ul>
+					<li>Ако се откажете сега, ще приключите играта с <span data-type="currency" class="label-gPoints">--</span> точки.</li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+			<div class="remaining-time">
+				<p>Оставащо време <span class="label-timeRemaining">00:10</span> сек.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="popup popup-success app-section-RegistrationSuccess hidden">
+		<div class="popup-back">
+			<button class="close-popup" data-type="btn" data-target="section" data-action="closePopup">X</button>
+			<h2>ЧЕСТИТО!</h2>
+			<h3>Вие спечелихте <span class="label-gPointsReal" data-type="currency">--</span> точки.</h3>
+			<p>Те Ви дават право на <span class="label-gDrawsWon">--</span> участия<br> в жребия за спечелването на<br>чисто нов автомобил.</p>
+			<button class="newGameBtn" data-type="btn" data-target="global" data-action="startNewGame"></button>
+      
+		</div>
+	</section>
+   
+  <section class="game-reg-screen app-section-Login hidden">
+   
+    <button class="close-popup" data-type="btn" data-target="global" data-action="restartGame">X</button>
+    <h2>Внимание</h2>
+    <h4>Този билет или квитанция е регистриран през www.7777.bg</h4>
+    <p class="label-loginError">За да продължите е нужно да се идентифицирате. <br>Моля, въведете информация за акаунта през който е регистриран билета:</p>
+    <div>
+      <form name="reg-input-form">
+        <input type="tel" name="reg-input-phone" data-selectable="true" placeholder="Телефон за връзка">
+        <input type="email" name="reg-input-email" data-selectable="true" placeholder="E-mail">
+      </form>
+    </div>
+    <button data-type="btn" data-target="section" data-action="submitReg"></button>
+  </section>
+    
+  <section class="game-reg-screen app-section-Registration hidden">
+    <h2>честито, вие спечелихте</h2>
+    <h1><span data-type="currency" class="label-gPointsReal">--</span> точки!</h1>
+    <h4>Вече участвате <span class="label-gDrawsWon"></span> пъти в жребия за спечелването на чисто нов автомобил!</h4>
+    <p class="label-regResult">Моля, въведете Вашите телефон за връзка и e-mail, <br> за да можем да се свържем с Вас в случай, че бъдете изтеглени: </p>
+    <div>
+      <form name="reg-input-form">
+        <input type="tel" name="reg-input-phone" data-selectable="true" placeholder="Телефон за връзка">
+        <input type="email" name="reg-input-email" data-selectable="true" placeholder="E-mail">
+      </form>
+    </div>
+    <button data-type="btn" data-target="section" data-action="submitReg"></button>
+  </section>
+  
+  <section class="game-reg-screen game-jackpot-won-screen app-section-JackpotWon hidden">
+    <button class="close-popup" data-type="btn" data-target="section" data-action="close">X</button>
+    <h2>MegaJackpot</h2>
+    <h1><span data-type="currency" class="label-gPoints">--</span> точки!</h1>
+    <video preload="auto">
+      <source src="C:\xampp\htdocs\megajackpot\images\jackpot.mp4" type="video/mp4">
+      <source src="C:\xampp\htdocs\megajackpot\images\jackpot.webm" type="video/webm">
+    </video>
+  </section>
+  
+  <section class="popup popup-success talon-history-screen app-section-TalonHistory hidden">
+		<div class="popup-back">
+			<button class="close-popup" data-type="btn" data-target="section" data-action="closePopup">X</button>
+		  <iframe></iframe>		
+		</div>
+	</section>
+  
+	<section class="popup popup-success app-section-NetworkError hidden">
+		<div class="popup-back">
+			<button class="close-popup" data-type="btn" data-target="global" data-action="restartApp">X</button>
+			<h2>Внимание</h2>
+			<h3 class="label-errorTitle"></h3>
+			<p class="label-errorText"></p>
+			<p><br>(код на грешката: <span class="label-lastReqState"></span>)<br></p>	
+		</div>
+	</section>
+   
+
+  <div class="popup popup-input app-keyboard">
+    <div class="input-area">
+      <input type="text" class="app-keyboard-display">
+      
+      
+      <div class="kbd app-keyboard-email app-keyboard-default">
+        <button data-type="kb" class="char">~</button><button data-type="kb" class="char">!</button><button data-type="kb" class="char">#</button><button data-type="kb" class="char">$</button><button data-type="kb" class="char">=</button><button data-type="kb" class="char">&</button><button data-type="kb" class="char">*</button><button data-type="kb" class="char">(</button><button data-type="kb" class="char">)</button><button data-type="kb" class="char">+</button><button data-type="kb" class="char">;</button><button data-type="kb" class="char">:</button><button data-type="kb" class="char">'</button><button data-type="kb" class="char">,</button>
+        <hr><hr>
+        <button data-type="kb">1</button><button data-type="kb">2</button><button data-type="kb">3</button><button data-type="kb">4</button><button data-type="kb">5</button><button data-type="kb">6</button><button data-type="kb">7</button><button data-type="kb">8</button><button data-type="kb">9</button><button data-type="kb">0</button><button data-type="kb" class="char">-</button><button data-type="kb" class="char">_</button><button data-type="kb" data-kb-action="delete">←</button>
+        <hr>
+        <button data-type="kb">q</button><button data-type="kb">w</button><button data-type="kb">e</button><button data-type="kb">r</button>
+        <button data-type="kb">t</button><button data-type="kb">y</button><button data-type="kb">u</button><button data-type="kb">i</button><button data-type="kb">o</button><button data-type="kb">p</button><button style="visibility:hidden;" data-type="kb">&nbsp;</button><button style="visibility:hidden;" data-type="kb">&nbsp;</button>
+        <hr>
+        <button style="visibility:hidden;" data-type="kb">&nbsp;</button><button data-type="kb">a</button><button data-type="kb">s</button><button data-type="kb">d</button><button data-type="kb">f</button><button data-type="kb">g</button><button data-type="kb">h</button><button data-type="kb">j</button><button data-type="kb">k</button><button data-type="kb">l</button><button style="visibility:hidden;" data-type="kb">&nbsp;</button><button style="visibility:hidden;" data-type="kb">&nbsp;</button><button style="visibility:hidden;" data-type="kb">&nbsp;</button>
+        <hr>
+        <button style="visibility:hidden;" data-type="kb">&nbsp;</button><button data-type="kb">z</button><button data-type="kb">x</button><button data-type="kb">c</button><button data-type="kb">v</button><button data-type="kb">b</button><button data-type="kb">n</button><button data-type="kb">m</button><button data-type="kb" class="char">@</button><button data-type="kb" class="char">.</button><button style="visibility:hidden;" data-type="kb">&nbsp;</button><button style="visibility:hidden;" data-type="kb">&nbsp;</button>
+      </div>
+      
+      
+      <div class="kbd app-keyboard-tel">
+        <button data-type="kb">1</button><button data-type="kb">2</button><button data-type="kb">3</button>
+        <hr>
+        <button data-type="kb">4</button><button data-type="kb">5</button><button data-type="kb">6</button>
+        <hr>
+        <button data-type="kb">7</button><button data-type="kb">8</button><button data-type="kb">9</button>
+        <hr>
+        <button style="visibility:hidden;" data-type="kb">&nbsp;</button><button data-type="kb">0</button><button data-type="kb" data-kb-action="delete">←</button>
+        <hr>
+      </div>
+      
+      
+      <button data-type="kb" data-kb-action="close" class="btn-ready">ЗАПИШИ</button>
+    </div>
+  </div>
+  
+  <script>
+		bg.ecard.start({
+      appName: 'MegaJackpot',
+      appParams: {
+        debugMode: true,
+        soundDebug: true,
+        is_web_game: 1,
+        userData: {
+          can_play_games:1,
+          ticket_total_points:"130",
+          game_points_required:"10",
+          TALON_ID:null,
+          total_win_games:13,
+          ticket_left_points:"130",
+        },
+        url: {
+          barcodeSubmit: {
+            url: 'staticAPI/mall_checkBarcode.php',
+            retryCount: 2,
+            retryTimeout: 0.5,
+            errorTitle: 'Възникна грешка в комуникацията',
+            errorText: 'Моля, проверете, дали сте свързани с интернет',
+          },
+          gameWheelSpin: {
+            url: 'staticAPI/mall_wheelSpin.php',
+            retryCount: 3,
+            retryTimeout: 5,
+            errorTitle: 'Възникна грешка в комуникацията',
+            errorText: 'Моля, проверете, дали сте свързани с интернет',
+          },
+          gameSphereSpin: {
+            url: 'staticAPI/mall_sphereSpin.php',
+            retryCount: 3,
+            retryTimeout: 5,
+            errorTitle: 'Възникна грешка в комуникацията',
+            errorText: 'Моля, проверете, дали сте свързани с интернет',
+          },
+          gameResultReg: {
+            url: 'staticAPI/mall_reg.php',
+            retryCount: 3,
+            retryTimeout: 5,
+            errorTitle: 'Възникна грешка в комуникацията',
+            errorText: 'Моля, проверете, дали сте свързани с интернет',
+          },
+        },
+        defUItimeout: 0.1,
+        defSoundVolume: 1,
+//        wheelRotationTime: 1,
+//        spheresIntroDuration: 1,
+        assetsBaseUrl: '/',
+        assets: [
+          {id: 'sound-sphereStop', assetType: 'Sound', url: 'images/sound/sphereStop'},
+//          {id: 'sound-spheresIntro', assetType: 'Sound', url: 'images/sound/spheresIntro'},
+//          {id: 'sound-spheresBack', assetType: 'Sound', url: 'images/sound/spheresBack'},
+//          {id: 'sound-spheresBackAfterError', assetType: 'Sound', url: 'images/sound/spheresBackAfterError'},
+//          {id: 'sound-regBack', assetType: 'Sound', url: 'images/sound/regBack'},
+          {id: 'sound-wheelClick', assetType: 'Sound', url: 'images/sound/wheelClick'},
+//          {id: 'sound-testMusic', assetType: 'Sound', url: 'images/sound/testMusic'},
+//          {id: 'sound-testMusic2', assetType: 'Sound', url: 'images/sound/testMusic2'},
+        ],
+        websocket: {
+////          Barcode: {
+//            fullUrl: 'ws://193.47.74.41:44444',
+//            reconnectTimeout: 3,
+//            pingInterval: 60,
+//            silentReconnect: 0,
+//            retryCount: 99,
+////          }
+        }
+      },
+      js: [
+        'js/vendor/ua-parser.min.js',
+//        'js/merged_js_megajackpot.js',
+         './js/vendor/TweenMax.min.js',
+         './js/vendor/howler.core.min.js',
+         './js/vendor/html5-dataset.js',
+         './js/app/bg.ecard.Time.js',
+         './js/app/bg.ecard.Console.js',
+         './js/app/bg.ecard.EventDispatcher.js',
+         './js/app/bg.ecard.InputManager.js',
+         './js/app/bg.ecard.VirtualKeyboard.js',
+         './js/app/bg.ecard.Network.js',
+         './js/app/bg.ecard.Network.Ajax.js',
+         './js/app/bg.ecard.Network.Socket.js',
+         // './js/app/bg.ecard.SoundManager.js',
+         './js/app/bg.ecard.SoundManagerWebAudio.js',
+         './js/app/bg.ecard.SoundManagerHowler.js',
+         './js/app/bg.ecard.AssetManager.js',
+         './js/app/bg.ecard.Asset.Class.js',
+         './js/app/bg.ecard.Asset.Image.js',
+         './js/app/bg.ecard.Asset.Sound.js',
+         './js/app/bg.ecard.DomTarget.js',
+         './js/app/bg.ecard.DomTargets.js',
+         './js/app/bg.ecard.SectionManager.js',
+         './js/app/bg.ecard.Interface.js',
+         './js/app/bg.ecard.InterfaceLabel.js',
+         './js/app/bg.ecard.Section.Class.js',
+         './js/app/bg.ecard.Section.Intro.js',
+         './js/app/bg.ecard.Section.IntroWeb.js',
+         './js/app/bg.ecard.Section.BarcodeWorking.js',
+         './js/app/bg.ecard.Section.Login.js',
+         './js/app/bg.ecard.Section.LoginError.js',
+         './js/app/bg.ecard.Section.GameStart.js',
+         './js/app/bg.ecard.Section.GameWheel.js',
+         './js/app/bg.ecard.Section.GameWheelResult.js',
+         './js/app/bg.ecard.Section.Spheres.js',
+         './js/app/bg.ecard.Section.GameError.js',
+         './js/app/bg.ecard.Section.JackpotWon.js',
+         './js/app/bg.ecard.Section.Registration.js',
+         './js/app/bg.ecard.Section.RegistrationSuccess.js',
+         './js/app/bg.ecard.Section.TalonHistory.js',
+         './js/app/bg.ecard.Section.NetworkError.js',
+ //        '/js/app/bg.ecard.SectionScreen.Class.js',
+ //        '/js/app/bg.ecard.ScreenManager.js',
+         './js/app/bg.ecard.DisplayElement.Class.js',
+         './js/app/bg.ecard.MegaJackpot.js',
+         './js/app/bg.ecard.MegaJackpot.Core.js',
+         './js/app/bg.ecard.MegaJackpot.Game.js',
+         './js/app/bg.ecard.MegaJackpot.BarcodeManager.js',
+         './js/app/bg.ecard.MegaJackpot.Sphere.js',
+      ]
+    });
+    
+    
+/*    if (document.location.href.indexOf('localhost') > 0) {
+   		return;
+      setTimeout(function(){
+        
+//        app.input.keyboard.show( document.querySelector('[name="reg-input-email"]') );
+//        app.sound.mute();
+        app.time.disableTimers();
+//        app.game.toggleWheelSpeed();
+//        app.barcodeManager.processMessage('{"TICKET_ID": "00000000001"}');
+//        app.input.handleButton( document.querySelector('.app-section-GameStart [data-action="startGame"') );
+        setTimeout(function(){
+//          app.game.endGame();
+//          app.game.showSpheres();
+//          console.clear();
+//          app.game.showSpheres();
+//          app.input.handleButton( document.querySelector('.app-section-GameStart [data-action="startGame"') );
+//          app.sections.load(app.config.sections['GameError']);
+//          app.game.endGame();
+          setTimeout(function(){
+//            app.barcodeManager.processMessage('{"TICKET_ID": "00000000001"}');
+//            app.input.handleClick( {target: document.querySelector('.app-section-Registration [name="reg-input-email"'), preventDefault: function(){}} );
+//                app.input.handleButton( document.querySelector('.app-section-Spheres [data-action="stop"') );
+//            app.input.handleButton( document.querySelector('.app-section-GameWheel [data-action="spinWheel"') );
+//            app.sections.active.spinWheel();
+            setTimeout(function(){
+//              app.input.handleButton( document.querySelector('.app-section-GameWheelResult [data-action="startSpheres"') );
+              setTimeout(function(){
+//                app.input.handleButton( document.querySelector('.app-section-Spheres [data-action="stop"') );
+                setTimeout(function(){
+//                  app.input.handleButton( document.querySelector('.app-section-Spheres [data-action="selectUp"') );
+                  setTimeout(function(){
+//                    app.input.handleButton( document.querySelector('.app-section-Spheres [data-action="stop"') );
+                    setTimeout(function(){
+//                      app.input.handleButton( document.querySelector('.app-section-Spheres [data-action="endGame"') );
+                      setTimeout(function(){
+//                        app.input.handleButton( document.querySelector('.app-section-Registration [data-action="submitReg"') ); 
+                          setTimeout(function(){
+//                          app.input.handleButton( document.querySelector('.app-section-RegistrationSuccess [data-action="startNewGame"') ); 
+                        }, 500)
+                      }, 500)
+                    }, 500)
+                  }, 500);
+                }, 500);
+              }, 1500);
+            }, 2500);
+          }, 500);
+        }, 500);
+      }, 500);
+      
+    }*/
+    
+	</script>
+</body>
+</html>

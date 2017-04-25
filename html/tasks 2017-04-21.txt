@@ -1,0 +1,14 @@
+Мениджър за секции:
+  + нов Class(Object) bg.ecard.WebApp.SectionManger
+    инициализация на секции - new bg.ecard.WebApp.Section() - според app.params.sections
+    зареждане на секция по подразбиране - според app.params.defSection
+    зареждане на произволна секция
+
+Създаване на клас за секция:
+  + нов Class(Object) bg.ecard.WebApp.Section
+    връзка към DOM елемент, съдържащ HTML кода на секцията
+    скриване на DOM елемента при инициализация на секцията
+    показване/скриване на секция
+    
+Debug:
+  console.log() в началото на всяка функция с името на функцията // console.log('new bg.ecard.WebApp.core()'), console.log('bg.ecard.WebApp.core.prototype.getAppId()') 

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="bg">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Ecard TRN</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+  </head>
+  <body>
+
+    <div class="header-container">
+      <header class="wrapper clearfix">
+        <h1 class="title"></h1>
+        <nav>
+          <ul>
+            <li><a href="#">Секция 1</a></li>
+            <li><a href="#">Секция 2</a></li>
+            <li><a href="#">Секция 3</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+    <div class="main-container">
+      
+      <div class="main wrapper clearfix" id="section1">
+
+        <article>
+          <header>
+            <h1>Секция 1</h1>
+          </header>
+          <section>
+            <h2></h2>
+            <p></p>
+          </section>
+        </article>
+
+        <aside>
+          <h3></h3>
+          <p></p>
+        </aside>
+
+      </div>
+
+      <div class="main wrapper clearfix" id="section2">
+
+        <article>
+          <header>
+            <h1>Секция 2</h1>
+          </header>
+          <section>
+            <h2></h2>
+            <p></p>
+          </section>
+        </article>
+
+      </div>
+
+      <div class="main wrapper clearfix" id="section3">
+
+        <article>
+          <header>
+            <h1>Секция 3</h1>
+          </header>
+          <section>
+            <h2></h2>
+            <p></p>
+          </section>
+        </article>
+
+      </div>
+
+    </div>
+
+    <div class="footer-container">
+      <footer class="wrapper">
+        <h3>&nbsp;</h3>
+      </footer>
+    </div>
+
+    <script src="js/ecard/bg.ecard.WebApp.js"></script>
+    <script src="js/ecard/bg.ecard.WebApp.SectionManager.js"></script>
+    <script src="js/ecard/bg.ecard.WebApp.Section.js"></script>
+    <script>
+      app = new bg.ecard.WebApp.core({
+        appId: 'WebApp',
+        sections: [
+          'section1', 'section2', 'section3'
+        ],
+        defSection: 'section1'
+      });
+    </script>
+
+  </body>
+</html>

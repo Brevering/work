@@ -9,6 +9,7 @@ bg.ecard.WebApp.SectionManager = function (sectionsObj, parent) {
         inputParam: sectionsObj,
         activeSection: {}
     };
+    this.params.type = "bg.ecard.WebApp.SectionManager";
 
     this.init();
 
@@ -21,21 +22,26 @@ bg.ecard.WebApp.SectionManager.prototype.init = function () {
 
         var key = this.params.inputParam.sections[i];
 
+        //TODO: Fix this hardcoded section init. Flag in the HTML?
+        if (key === "section2") {
+            this.elements[key] = new bg.ecard.WebApp.SectionLogin(key, this);
+        }
         if (!this.elements[key]) {
             this.elements[key] = new bg.ecard.WebApp.Section(key, this);
+
         }
     }
     var defSectionId = this.elements[this.params.inputParam.defSection].params.id
 
     this.params.activeSection = this.elements[this.params.inputParam.defSection];
-    this.load(defSectionId);
+    this.showSection(this.params.activeSection);
 }
 
 bg.ecard.WebApp.SectionManager.prototype.load = function (sectionToLoadId) {
     console.log('bg.ecard.WebApp.SectionManager.prototype.load()');
 
     var sectionToLoad = this.getSectionById(sectionToLoadId);
-    if (sectionToLoad) {
+    if (sectionToLoad && (sectionToLoad !== this.params.activeSection)) {
         this.hideSection(this.params.activeSection);
         this.params.activeSection = sectionToLoad;
         this.showSection(sectionToLoad);

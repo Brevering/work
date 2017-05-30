@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="bg">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Ecard TRN</title>
@@ -9,91 +10,124 @@
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/main.css">
 
-  </head>
-  <body>
+</head>
+
+<body>
 
     <div class="header-container">
-      <header class="wrapper clearfix">
-        <h1 class="title"></h1>
-        <nav>
-          <ul>
-            <li><a href="#">Секция 1</a></li>
-            <li><a href="#">Секция 2</a></li>
-            <li><a href="#">Секция 3</a></li>
-          </ul>
-        </nav>
-      </header>
+        <header class="wrapper clearfix">
+            <h1 class="title"></h1>
+            <nav>
+                <ul>
+                    <li><a href="#" data-type='btn' data-target='app' data-action='toggleSection1'>Секция 1</a></li>
+                    <li><a href="#" data-type='btn' data-target='app' data-action='toggleSection2'>Секция 2</a></li>
+                    <li><a href="#" data-type='btn' data-target='app' data-action='toggleSection3'>Секция 3</a></li>
+
+                </ul>
+            </nav>
+        </header>
     </div>
 
     <div class="main-container">
-      
-      <div class="main wrapper clearfix" id="section1">
 
-        <article>
-          <header>
-            <h1>Секция 1</h1>
-          </header>
-          <section>
-            <h2></h2>
-            <p></p>
-          </section>
-        </article>
+        <div class="main wrapper clearfix" id="section1">
 
-        <aside>
-          <h3></h3>
-          <p></p>
-        </aside>
+            <article>
+                <header>
+                    <h1>Секция 1</h1>
+                </header>
+                <section>
+                    <h2></h2>
+                    <p></p>
+                </section>
+            </article>
 
-      </div>
+            <aside>
+                <h3></h3>
+                <p></p>
+            </aside>
 
-      <div class="main wrapper clearfix" id="section2">
+        </div>
 
-        <article>
-          <header>
-            <h1>Секция 2</h1>
-          </header>
-          <section>
-            <h2></h2>
-            <p></p>
-          </section>
-        </article>
+        <div class="main wrapper clearfix" id="section2">
 
-      </div>
+            <article>
+                <header>
+                    <h1>Секция 2</h1>
+                </header>
+                <section form-id="form1">
+                    <label for="form1Username">Username: </label>
+                    <input type="text" id="form1Username" name="username" formfield="true" />
+                    <label for="form1Password">Password: </label>
+                    <input type="text" id="form1Password" name="password" formfield="true" />
+                    <h2></h2>
+                    <p></p>
+                    <button style="color:blue;" data-type='btn' data-target='app' data-action='submitForm'>Submit Form 1</button>
+                </section>
 
-      <div class="main wrapper clearfix" id="section3">
+                <section form-id="form2">
+                    <label for="form2Username">Email: </label>
+                    <input type="text" id="form2Username" name="email" formfield="true" />
+                    <label for="form2Password">Password: </label>
+                    <input type="text" id="form2Password" name="password" formfield="true" />
+                    <h2></h2>
+                    <p></p>
+                    <button style="color:blue;" data-type='btn' data-target='app' data-action='submitForm'>Submit Form 2</button>
+                </section>
 
-        <article>
-          <header>
-            <h1>Секция 3</h1>
-          </header>
-          <section>
-            <h2></h2>
-            <p></p>
-          </section>
-        </article>
 
-      </div>
+
+            </article>
+
+        </div>
+
+        <div class="main wrapper clearfix" id="section3">
+
+            <article>
+                <header>
+                    <h1>Секция 3</h1>
+                </header>
+                <section>
+                    <h2></h2>
+                    <p></p>
+                </section>
+            </article>
+
+        </div>
 
     </div>
 
     <div class="footer-container">
-      <footer class="wrapper">
-        <h3>&nbsp;</h3>
-      </footer>
+        <footer class="wrapper">
+            <h3>&nbsp;</h3>
+            <button style="color:blue;" data-type='btn' data-target='app' data-action='disableSection1'>Disable Sec 1</button>
+            <button style="color:blue;" data-type='btn' data-target='app' data-action='enableSection1'>Enable Sec 1</button>
+
+        </footer>
     </div>
 
     <script src="js/ecard/bg.ecard.WebApp.js"></script>
     <script src="js/ecard/bg.ecard.WebApp.SectionManager.js"></script>
     <script src="js/ecard/bg.ecard.WebApp.Section.js"></script>
+    <script src="js/ecard/bg.ecard.WebApp.InputManager.js"></script>
+    <script src="js/ecard/bg.ecard.WebApp.EventDispatcher.js"></script>
+    <script src="js/ecard/bg.ecard.WebApp.Event.js"></script>
+    <script src="js/ecard/bg.ecard.WebApp.Ajax.js"></script>
+    <script src="js/ecard/bg.ecard.WebApp.Form.js"></script>
+    <script src="js/ecard/bg.ecard.WebApp.SectionLogin.js"></script>
+
+
     <script>
-      app = new bg.ecard.WebApp.core({
-        appId: 'WebApp',
-        sections: [
-          'section1', 'section2', 'section3'
-        ],
-        defSection: 'section1'
-      });
+        app = new bg.ecard.WebApp.core({
+            appId: 'WebApp',
+            sections: [
+                'section1', 'section2', 'section3'
+            ],
+            defSection: 'section1'
+        });
+
     </script>
 
-  </body>
+</body>
+
 </html>
